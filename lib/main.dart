@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'pages/therapyGenerate/createActivity.dart';
+// import 'doctor_home_screen.dart'; // your home screen file
 
 void main() {
   runApp(const MyApp());
@@ -7,116 +9,314 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (_) => const DoctorHomeScreen(),
+        '/assign-activities': (_) => const CreateActivityPage(),
+        // add more routes here later
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+class DoctorHomeScreen extends StatelessWidget {
+  const DoctorHomeScreen({super.key});
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void _go(BuildContext context, String route) {
+    Navigator.pushNamed(context, route);
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      backgroundColor: const Color(0xFFFDFDFD),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Top avatar + bell
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    // onTap: () => _go(context, '/profile'),
+                    child: const CircleAvatar(
+                      radius: 22,
+                      backgroundColor: Color(0xFFFFF3E0),
+                      child: Icon(
+                        Icons.person,
+                        color: Color(0xFFFF9800),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    // onTap: () => _go(context, '/notifications'),
+                    child: Container(
+                      width: 34,
+                      height: 34,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFFFF3E0),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.notifications_none_rounded,
+                        color: Color(0xFF59316B),
+                        size: 22,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+
+              const Text(
+                "Good Afternoon,",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF3B1F47),
+                ),
+              ),
+              const Text(
+                "Doctor!",
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF3B1F47),
+                ),
+              ),
+              const SizedBox(height: 28),
+
+              // Assign Activities
+              GestureDetector(
+                onTap: () => _go(context, '/assign-activities'),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 18),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFF3E8),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Assign Activities",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF5A4332),
+                              ),
+                            ),
+                            SizedBox(height: 6),
+                            Text(
+                              "Let's open up to the things that\nmatter the most",
+                              style: TextStyle(
+                                fontSize: 12,
+                                height: 1.5,
+                                color: Color(0xFF8A6E5A),
+                              ),
+                            ),
+                            SizedBox(height: 14),
+                            Text(
+                              "Assign Now  📅",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFFFF6D00),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 74,
+                        height: 74,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFFFA726),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.person_outline,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // View Reports
+              GestureDetector(
+                onTap: () => _go(context, '/view-reports'),
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 18),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF34A853),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "View Reports",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(height: 6),
+                            Text(
+                              "Get back chat access and\nsession credits",
+                              style: TextStyle(
+                                fontSize: 12,
+                                height: 1.5,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(height: 14),
+                            Row(
+                              children: [
+                                Text(
+                                  "View Now",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                SizedBox(width: 6),
+                                Icon(
+                                  Icons.arrow_right_alt_rounded,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 74,
+                        height: 74,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(255, 255, 255, 0.14),
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: const Icon(
+                          Icons.description_rounded,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const Spacer(),
+            ],
+          ),
+        ),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+
+      // Bottom Nav
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(26),
+            topRight: Radius.circular(26),
+          ),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 10,
+              offset: Offset(0, -2),
+              color: Color(0x1A000000),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _NavItem(
+              icon: Icons.home_filled,
+              isActive: true,
+              onTap: () {
+                // already home
+              },
+            ),
+            _NavItem(
+              icon: Icons.video_call_rounded,
+              onTap: () => _go(context, '/sessions'),
+            ),
+            _NavItem(
+              icon: Icons.chat_bubble_outline_rounded,
+              onTap: () => _go(context, '/chat'),
+            ),
+            _NavItem(
+              icon: Icons.person_outline_rounded,
+              onTap: () => _go(context, '/account'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class _NavItem extends StatelessWidget {
+  final IconData icon;
+  final bool isActive;
+  final VoidCallback? onTap;
+
+  const _NavItem({
+    required this.icon,
+    this.isActive = false,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final baseIcon = Icon(
+      icon,
+      size: 26,
+      color: isActive ? Colors.white : const Color(0xFFB0B0B0),
+    );
+
+    return GestureDetector(
+      onTap: onTap,
+      child: isActive
+          ? Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+          color: Color(0xFFFF6D00),
+          shape: BoxShape.circle,
+        ),
+        child: baseIcon,
+      )
+          : baseIcon,
     );
   }
 }
