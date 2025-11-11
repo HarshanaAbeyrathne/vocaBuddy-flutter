@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-void main() {
-  runApp(const SpeechBuddyApp());
-}
+//import 'package:vocabuddy/main.dart';
+import 'package:vocabuddy/pages/activitySummaryScreen/activity_summary_page.dart';
 
 class SpeechBuddyApp extends StatelessWidget {
   const SpeechBuddyApp({Key? key}) : super(key: key);
@@ -278,7 +276,13 @@ class _InstructionsScreenState extends State<InstructionsScreen>
         child: InkWell(
           onTap: () {
             HapticFeedback.mediumImpact();
+            // Navigate to Home Screen
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ActivitySummaryScreen()),
+            );
           },
+
           borderRadius: BorderRadius.circular(16),
           child: Ink(
             decoration: BoxDecoration(
