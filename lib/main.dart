@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/doctor_home_screen.dart';
 import 'pages/therapyGenerate/createActivity.dart';
 import 'pages/therapyStartScreen/therapy_start_screen.dart';
-import 'pages/ActivityStart/activity_start_scree.dart';
+import 'pages/ActivityStart/activity_start_screen.dart';
 
 
 void main() {

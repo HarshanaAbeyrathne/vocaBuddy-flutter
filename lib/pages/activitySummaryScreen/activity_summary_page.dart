@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vocabuddy/pages/ActivityStart/activity_start_scree.dart';
+import 'package:vocabuddy/pages/ActivityStart/activity_start_screen.dart';
 
 // ===================================================================
 // 1. CONSTANTS, THEMES, AND DATA MODELS

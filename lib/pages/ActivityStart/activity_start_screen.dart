@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vocabuddy/pages/ActivityStart/activity_start_scree.dart';
+import 'package:vocabuddy/pages/ActivityStart/activity_start_screen.dart';
+import 'package:vocabuddy/pages/doctor_home_screen.dart';
 
 
 // ===================================================================
@@ -203,7 +204,10 @@ class _AntLearningActivityState extends State<AntLearningActivity>
             color: _kSecondaryHighlight,
             backgroundColor: const Color(0xFFFFE8CC), //home icon
             onTap: () {
-              // TODO: Navigate home
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DoctorHomeScreen()),
+              );
             },
           ),
         ],
@@ -766,25 +770,3 @@ class _PlayfulFeedbackCard extends StatelessWidget {
 // ===================================================================
 // MAIN APP (For Testing)
 // ===================================================================
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ant Learning Activity',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: _kPrimaryTheme,
-        scaffoldBackgroundColor: _kBackgroundColor,
-        useMaterial3: true,
-      ),
-      home: const AntLearningActivity(),
-    );
-  }
-}
