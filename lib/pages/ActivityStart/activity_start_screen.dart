@@ -189,7 +189,7 @@ class _AntLearningActivityState extends State<AntLearningActivity>
                 const Icon(Icons.stars_rounded, color: _kAccentColor, size: 18),
                 const SizedBox(width: 6),
                 Text(
-                  'Let"s Start Baby !',
+                  'Let"s Start Baby!',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
                     color: _kTextColorDark,
