@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'pages/doctor_home_screen.dart';
 import 'pages/therapyGenerate/createActivity.dart';
+
+import 'pages/therapyStartScreen/therapy_start_screen.dart';
 import 'pages/Parent Awareness/parent dashboard.dart';
+
 
 void main() {
   runApp(const VocaBuddyApp());
@@ -20,6 +23,8 @@ class VocaBuddyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const DoctorHomeScreen(),
+       // '/assign-activities': (context) => const CreateActivityPage(),
+        '/assign-activities': (context) => const SpeechBuddyApp()
         '/assign-activities': (context) => const CreateActivityPage(),
         '/view-reports': (context) =>  ParentDashboard(),
         // '/view-reports': (context) => const ViewReportsPage(),
