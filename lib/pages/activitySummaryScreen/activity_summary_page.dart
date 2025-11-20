@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vocabuddy/pages/ActivityStart/activity_start_scree.dart';
 
 // ===================================================================
 // 1. CONSTANTS, THEMES, AND DATA MODELS
@@ -139,9 +140,13 @@ class _ActivitySummaryScreenState extends State<ActivitySummaryScreen> {
                 _PrimaryButton(
                   label: 'ආරම්භ කරන්න',
                   onTap: () {
-                    // TODO: Implement navigation to session screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AntLearningActivity()),
+                    );
                   },
                 ),
+
                 const SizedBox(height: 20),
               ],
             ),
