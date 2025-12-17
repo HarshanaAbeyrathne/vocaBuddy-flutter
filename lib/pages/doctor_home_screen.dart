@@ -194,7 +194,7 @@ class DoctorHomeScreen extends StatelessWidget {
                         width: 74,
                         height: 74,
                         decoration: BoxDecoration(
-                          color: const Color.fromRGBO(255, 255, 255, 0.14),
+                          color: Color.fromRGBO(255, 255, 255, 0.14),
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: const Icon(
@@ -209,6 +209,7 @@ class DoctorHomeScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 18),
+
 
               // Assign Activities card
               GestureDetector(
