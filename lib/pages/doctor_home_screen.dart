@@ -194,12 +194,88 @@ class DoctorHomeScreen extends StatelessWidget {
                         width: 74,
                         height: 74,
                         decoration: BoxDecoration(
-                          color: const Color.fromRGBO(255, 255, 255, 0.14),
+                          color: Color.fromRGBO(255, 255, 255, 0.14),
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: const Icon(
                           Icons.description_rounded,
                           size: 40,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              // ✅ NEW: Voice Therapy card
+              GestureDetector(
+                onTap: () => _go(context, '/voice-therapy'),
+                child: Container(
+                  width: double.infinity,
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF3E5F5),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Voice Therapy",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF4A148C),
+                              ),
+                            ),
+                            SizedBox(height: 6),
+                            Text(
+                              "Add words and record correct &\nincorrect pronunciations",
+                              style: TextStyle(
+                                fontSize: 12,
+                                height: 1.5,
+                                color: Color(0xFF7B5E8B),
+                              ),
+                            ),
+                            SizedBox(height: 14),
+                            Row(
+                              children: [
+                                Text(
+                                  "Insert Voice Notes",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xFF8E24AA),
+                                  ),
+                                ),
+                                SizedBox(width: 6),
+                                Icon(
+                                  Icons.mic_rounded,
+                                  size: 18,
+                                  color: Color(0xFF8E24AA),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 74,
+                        height: 74,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF8E24AA),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.record_voice_over_rounded,
+                          size: 38,
                           color: Colors.white,
                         ),
                       ),
