@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
       Navigator.pushReplacement(
         context,
@@ -27,10 +27,10 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Transform.scale(
-          scale: 1.15, // ✅ increase size (try 1.10 - 1.30)
+          scale: 1.15,
           child: Image.asset(
-            "assets/splashScreen/background_remove.png",
-            fit: BoxFit.contain, //
+            "assets/splashScreen/background_photo.png",
+            fit: BoxFit.contain,
             filterQuality: FilterQuality.high,
           ),
         ),
